@@ -78,14 +78,70 @@
 		4FCE325F21B867020044CF84 /* Boomset_behlul */ = {
 			isa = PBXGroup;
 			children = (
-				4FCE326021B867020044CF84 /* AppDelegate.swift */,
-				4FCE326221B867020044CF84 /* ViewController.swift */,
-				4FCE326421B867020044CF84 /* Main.storyboard */,
-				4FCE326721B867040044CF84 /* Assets.xcassets */,
-				4FCE326921B867040044CF84 /* LaunchScreen.storyboard */,
-				4FCE326C21B867040044CF84 /* Info.plist */,
+				4FD8A9BD21B86855001BBC68 /* Common */,
+				4FD8A9C121B8687A001BBC68 /* Network */,
+				4FD8A9BF21B8686C001BBC68 /* Helpers */,
+				4FD8A9C021B86873001BBC68 /* Model */,
+				4FD8A9C221B86888001BBC68 /* View */,
+				4FD8A9C321B8689D001BBC68 /* Controller */,
 			);
 			path = Boomset_behlul;
+			sourceTree = "<group>";
+		};
+		4FD8A9BD21B86855001BBC68 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4FCE326721B867040044CF84 /* Assets.xcassets */,
+				4FCE326C21B867040044CF84 /* Info.plist */,
+				4FCE326021B867020044CF84 /* AppDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4FD8A9BF21B8686C001BBC68 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4FD8A9C021B86873001BBC68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4FD8A9C121B8687A001BBC68 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4FD8A9C221B86888001BBC68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4FD8A9C421B868D3001BBC68 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4FD8A9C321B8689D001BBC68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4FCE326221B867020044CF84 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4FD8A9C421B868D3001BBC68 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4FCE326421B867020044CF84 /* Main.storyboard */,
+				4FCE326921B867040044CF84 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,8 +410,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QZY3LQ388;
-				INFOPLIST_FILE = Boomset_behlul/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/Boomset_behlul/Common/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.behlulkusaslan.Boomset-behlul";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -370,8 +429,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QZY3LQ388;
-				INFOPLIST_FILE = Boomset_behlul/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/Boomset_behlul/Common/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.behlulkusaslan.Boomset-behlul";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
