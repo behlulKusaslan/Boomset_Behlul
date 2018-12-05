@@ -8,11 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LogInViewController: UIViewController {
+    
+    // MARK:- IBOutlet
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
+    // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    // MARK:- IBAction
+    @IBAction func logInButtonTapped(_ sender: UIButton) {
+        
     }
 
 
