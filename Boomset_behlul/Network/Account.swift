@@ -11,7 +11,9 @@ import Moya
 
 public enum Account {
     
-    static private var authKey = ""
+    static var authKey: String {
+        return UserDefaults.standard.string(forKey: UserDefaultsKey.AUTH_KEY) ?? ""
+    }
     
     case login(userName: String, password: String)
     
@@ -50,7 +52,7 @@ extension Account: TargetType {
     public var headers: [String : String]? {
         return [
             "Content-Type" : "application/json",
-            "Authorization" : "\(Account.authKey)"
+            "Authorization" : Account.authKey
         ]
     }
     

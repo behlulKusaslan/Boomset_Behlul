@@ -11,7 +11,7 @@ import Moya
 
 class LogInViewController: UIViewController {
     
-    // MARK:- IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -21,17 +21,23 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Test request
-        accountProvider.request(.login(userName: "testaccount@boomset.com", password: "Boomsettest123")) { [weak self] (result) in
+        // fill textFields
+        userNameTextField.text = "testaccount@boomset.com"
+        passwordTextField.text = "Boomsettest123"
+    }
+    
+    // MARK: - Functions
+    fileprivate func logIn(userName: String, password: String) {
+        accountProvider.request(.login(userName: userName, password: password)) { [weak self] (result) in
             guard let strongSelf = self else { return }
             
             switch result {
             case .success(let response):
                 do {
-                    print(try response.mapJSON())
-                    //let token = try response.map(LoginResponse<Loginresult>.self).data.token
                     let loginresult = try response.map(Loginresult.self)
-                    print(loginresult)
+                    // Save token
+                    UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
+                    print(Account.authKey)
                 } catch {
                     print("response map error")
                 }
@@ -41,11 +47,12 @@ class LogInViewController: UIViewController {
         }
     }
     
-    // MARK:- IBAction
+    // MARK: - IBAction
     @IBAction func logInButtonTapped(_ sender: UIButton) {
+        guard let userName = userNameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
         
+        logIn(userName: userName, password: password)
     }
-
-
 }
 

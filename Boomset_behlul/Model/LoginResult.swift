@@ -9,5 +9,5 @@
 import Foundation
 
 struct Loginresult: Codable {
-    let token: String
+    var token: String
 }
