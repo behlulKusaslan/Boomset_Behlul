@@ -13,6 +13,9 @@
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
 		4FCE326821B867040044CF84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326721B867040044CF84 /* Assets.xcassets */; };
 		4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326921B867040044CF84 /* LaunchScreen.storyboard */; };
+		4FD8A9C621B86D51001BBC68 /* CodableResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */; };
+		4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C721B86E12001BBC68 /* LoginResult.swift */; };
+		4FD8A9CA21B86EAD001BBC68 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C921B86EAD001BBC68 /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		4FCE326721B867040044CF84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FCE326A21B867040044CF84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FCE326C21B867040044CF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableResponses.swift; sourceTree = "<group>"; };
+		4FD8A9C721B86E12001BBC68 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
+		4FD8A9C921B86EAD001BBC68 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		515F00959A4CE859280092BD /* Pods-Boomset_behlul.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomset_behlul.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomset_behlul/Pods-Boomset_behlul.release.xcconfig"; sourceTree = "<group>"; };
 		D21BF30F293EF11292DCA22F /* Pods_Boomset_behlul.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomset_behlul.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -108,6 +114,7 @@
 		4FD8A9C021B86873001BBC68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4FD8A9C721B86E12001BBC68 /* LoginResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +122,8 @@
 		4FD8A9C121B8687A001BBC68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */,
+				4FD8A9C921B86EAD001BBC68 /* Account.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -260,8 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD8A9CA21B86EAD001BBC68 /* Account.swift in Sources */,
+				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
 				4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */,
 				4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */,
+				4FD8A9C621B86D51001BBC68 /* CodableResponses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
