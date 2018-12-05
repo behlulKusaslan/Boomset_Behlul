@@ -37,13 +37,21 @@ class LogInViewController: UIViewController {
                     let loginresult = try response.map(Loginresult.self)
                     // Save token
                     UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
-                    print(Account.authKey)
+                    strongSelf.goToEventsViewController()
                 } catch {
                     print("response map error")
                 }
             case .failure(let error):
                 print("Login error \(error.errorDescription ?? "")")
             }
+        }
+    }
+    
+    fileprivate func goToEventsViewController() {
+        let storyboardName = UIStoryboard.Storyboard.events.filename
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        if let destinationViewController = storyboard.instantiateViewController(withIdentifier: EventsViewController.identifier) as? EventsViewController {
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }
     

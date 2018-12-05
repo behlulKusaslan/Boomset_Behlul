@@ -7,7 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserDefaultsKey {
     static let AUTH_KEY = "AuthKey"
+}
+
+extension UIStoryboard {
+    enum Storyboard: String {
+        case events
+        
+        var filename: String {
+            return rawValue.capitalized
+        }
+    }
 }

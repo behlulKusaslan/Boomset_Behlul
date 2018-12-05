@@ -17,6 +17,9 @@
 		4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C721B86E12001BBC68 /* LoginResult.swift */; };
 		4FD8A9CA21B86EAD001BBC68 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C921B86EAD001BBC68 /* Account.swift */; };
 		4FD8A9CC21B87CE2001BBC68 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CB21B87CE2001BBC68 /* Constant.swift */; };
+		4FD8A9CE21B8824D001BBC68 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CD21B8824D001BBC68 /* Events.storyboard */; };
+		4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CF21B88367001BBC68 /* EventsViewController.swift */; };
+		4FD8A9D321B8843F001BBC68 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9D221B8843F001BBC68 /* Identifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		4FD8A9C721B86E12001BBC68 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		4FD8A9C921B86EAD001BBC68 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4FD8A9CB21B87CE2001BBC68 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4FD8A9CD21B8824D001BBC68 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
+		4FD8A9CF21B88367001BBC68 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		4FD8A9D221B8843F001BBC68 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		515F00959A4CE859280092BD /* Pods-Boomset_behlul.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomset_behlul.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomset_behlul/Pods-Boomset_behlul.release.xcconfig"; sourceTree = "<group>"; };
 		D21BF30F293EF11292DCA22F /* Pods_Boomset_behlul.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomset_behlul.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,7 +148,9 @@
 		4FD8A9C321B8689D001BBC68 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FD8A9D121B88428001BBC68 /* Protocol */,
 				4FCE326221B867020044CF84 /* LogInViewController.swift */,
+				4FD8A9CF21B88367001BBC68 /* EventsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,9 +159,18 @@
 			isa = PBXGroup;
 			children = (
 				4FCE326421B867020044CF84 /* Main.storyboard */,
+				4FD8A9CD21B8824D001BBC68 /* Events.storyboard */,
 				4FCE326921B867040044CF84 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		4FD8A9D121B88428001BBC68 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4FD8A9D221B8843F001BBC68 /* Identifiable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */,
+				4FD8A9CE21B8824D001BBC68 /* Events.storyboard in Resources */,
 				4FCE326821B867040044CF84 /* Assets.xcassets in Resources */,
 				4FCE326621B867020044CF84 /* Main.storyboard in Resources */,
 			);
@@ -276,6 +294,8 @@
 				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
 				4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */,
 				4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */,
+				4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */,
+				4FD8A9D321B8843F001BBC68 /* Identifiable.swift in Sources */,
 				4FD8A9C621B86D51001BBC68 /* CodableResponses.swift in Sources */,
 				4FD8A9CC21B87CE2001BBC68 /* Constant.swift in Sources */,
 			);
