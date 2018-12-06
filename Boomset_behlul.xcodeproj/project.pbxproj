@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F995590789A65D70EDCBBDF /* Pods_Boomset_behlul.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21BF30F293EF11292DCA22F /* Pods_Boomset_behlul.framework */; };
+		4F8425B221B90CB9004F6959 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F8425B421B90CB9004F6959 /* Localizable.strings */; };
 		4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326021B867020044CF84 /* AppDelegate.swift */; };
 		4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326221B867020044CF84 /* LogInViewController.swift */; };
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
@@ -25,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		4415B351FD2B8114079B9835 /* Pods-Boomset_behlul.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomset_behlul.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boomset_behlul/Pods-Boomset_behlul.debug.xcconfig"; sourceTree = "<group>"; };
+		4F8425B321B90CB9004F6959 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4F8425B521B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/Main.strings"; sourceTree = "<group>"; };
+		4F8425B621B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		4F8425B721B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4FCE325D21B867020044CF84 /* Boomset_behlul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomset_behlul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCE326021B867020044CF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCE326221B867020044CF84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +78,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4F8425AF21B90C69004F6959 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4F8425B421B90CB9004F6959 /* Localizable.strings */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		4FCE325421B867020044CF84 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +120,7 @@
 		4FD8A9BD21B86855001BBC68 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4F8425AF21B90C69004F6959 /* Utilities */,
 				4FCE326721B867040044CF84 /* Assets.xcassets */,
 				4FCE326C21B867040044CF84 /* Info.plist */,
 				4FCE326021B867020044CF84 /* AppDelegate.swift */,
@@ -220,6 +234,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"tr-TR",
 			);
 			mainGroup = 4FCE325421B867020044CF84;
 			productRefGroup = 4FCE325E21B867020044CF84 /* Products */;
@@ -236,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8425B221B90CB9004F6959 /* Localizable.strings in Resources */,
 				4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */,
 				4FD8A9CE21B8824D001BBC68 /* Events.storyboard in Resources */,
 				4FCE326821B867040044CF84 /* Assets.xcassets in Resources */,
@@ -308,10 +324,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4F8425B421B90CB9004F6959 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F8425B321B90CB9004F6959 /* en */,
+				4F8425B721B90D4A004F6959 /* tr-TR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4FCE326421B867020044CF84 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4FCE326521B867020044CF84 /* Base */,
+				4F8425B521B90D4A004F6959 /* tr-TR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -320,6 +346,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4FCE326A21B867040044CF84 /* Base */,
+				4F8425B621B90D4A004F6959 /* tr-TR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -331,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -392,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

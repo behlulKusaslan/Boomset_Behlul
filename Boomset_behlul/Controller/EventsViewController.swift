@@ -20,6 +20,8 @@ class EventsViewController: UIViewController {
             case .loading:
                 tableView.isHidden = true
                 messageView.isHidden = false
+                messageImage.image = UIImage(named: "loading_panda")
+                messageLabel.text = NSLocalizedString("EventsViewController_loading_message", comment: "")
             case .ready:
                 tableView.isHidden = false
                 messageView.isHidden = true
@@ -27,6 +29,8 @@ class EventsViewController: UIViewController {
             case .error:
                 tableView.isHidden = true
                 messageView.isHidden = false
+                messageImage.image = UIImage(named: "error_panda")
+                messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
             }
         }
     }

@@ -21,6 +21,9 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // remove token. There is no sign out so remove token before it is saved
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
+        
         // fill textFields
         userNameTextField.text = "testaccount@boomset.com"
         passwordTextField.text = "Boomsettest123"
