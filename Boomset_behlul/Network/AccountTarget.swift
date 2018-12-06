@@ -52,7 +52,7 @@ extension AccountTarget: TargetType {
     public var headers: [String : String]? {
         return [
             "Content-Type" : "application/json",
-            "Authorization" : "Token \(AccountTarget.authKey)"
+            "Authorization" : AccountTarget.authKey == "" ? "" : "Token \(AccountTarget.authKey)"
         ]
     }
     

@@ -21,7 +21,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // remove token. There is no sign out so remove token before it is saved
+        //UserDefaults.standard.set("5994570dd4865ca5fd5a7b4ecefd5d17180d3d53", forKey: UserDefaultsKey.AUTH_KEY)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
         
         // fill textFields
@@ -37,6 +37,7 @@ class LogInViewController: UIViewController {
             switch result {
             case .success(let response):
                 do {
+                    print(try response.mapJSON())
                     let loginresult = try response.map(Loginresult.self)
                     // Save token
                     UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
