@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Boomset_behlul
+
+  Created by behlul on 6.12.2018.
+  Copyright © 2018 behlul. All rights reserved.
+*/
+
+"EventsViewController_loading_message"="Loading...";
+"EventsViewController_error_message"="Some things went wrong :(";

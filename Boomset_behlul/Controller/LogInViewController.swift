@@ -11,15 +11,18 @@ import Moya
 
 class LogInViewController: UIViewController {
     
-    // MARK: - IBOutlet
+    // MARK: - Outlets
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    fileprivate let accountProvider = MoyaProvider<Account>()
+    fileprivate let accountProvider = MoyaProvider<AccountTarget>()
 
-    // Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //UserDefaults.standard.set("5994570dd4865ca5fd5a7b4ecefd5d17180d3d53", forKey: UserDefaultsKey.AUTH_KEY)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
         
         // fill textFields
         userNameTextField.text = "testaccount@boomset.com"
@@ -37,13 +40,21 @@ class LogInViewController: UIViewController {
                     let loginresult = try response.map(Loginresult.self)
                     // Save token
                     UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
-                    print(Account.authKey)
+                    strongSelf.goToEventsViewController()
                 } catch {
                     print("response map error")
                 }
             case .failure(let error):
                 print("Login error \(error.errorDescription ?? "")")
             }
+        }
+    }
+    
+    fileprivate func goToEventsViewController() {
+        let storyboardName = UIStoryboard.Storyboard.events.filename
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        if let destinationViewController = storyboard.instantiateViewController(withIdentifier: EventsViewController.identifier) as? EventsViewController {
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }
     
