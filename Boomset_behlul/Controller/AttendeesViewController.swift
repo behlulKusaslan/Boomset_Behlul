@@ -49,6 +49,23 @@ class AttendeesViewController: UIViewController {
 
         state = .loading
         
+        eventProvider.request(.attendees(eventId: eventId, page: 2)) { [weak self] (result) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let response):
+                debugPrint(response.request)
+                do {
+                    debugPrint(try response.mapJSON())
+                    let attendees = try response.map(Attendees.self, failsOnEmptyData: false)
+                    debugPrint(attendees)
+                } catch {
+                    strongSelf.state = .error("attendees map error")
+                }
+            case .failure(let error):
+                strongSelf.state = .error(error.localizedDescription)
+            }
+        }
+        
     }
 
 }

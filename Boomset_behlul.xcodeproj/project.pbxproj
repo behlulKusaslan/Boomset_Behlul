@@ -13,6 +13,7 @@
 		4F8425BE21B929C6004F6959 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */; };
 		4FB5F51021B932980041375F /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F50F21B932980041375F /* XibLoadable.swift */; };
 		4FB5F51221B93E3F0041375F /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */; };
+		4FBF5F9921B990D90030DFF5 /* Attendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5F9821B990D90030DFF5 /* Attendees.swift */; };
 		4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326021B867020044CF84 /* AppDelegate.swift */; };
 		4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326221B867020044CF84 /* LogInViewController.swift */; };
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
 		4FB5F50F21B932980041375F /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
 		4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
+		4FBF5F9821B990D90030DFF5 /* Attendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendees.swift; sourceTree = "<group>"; };
 		4FCE325D21B867020044CF84 /* Boomset_behlul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomset_behlul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCE326021B867020044CF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCE326221B867020044CF84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				4FD8A9C721B86E12001BBC68 /* LoginResult.swift */,
 				4FD8A9D621B88A99001BBC68 /* Events.swift */,
+				4FBF5F9821B990D90030DFF5 /* Attendees.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			files = (
 				4FB5F51221B93E3F0041375F /* AttendeesViewController.swift in Sources */,
 				4FD8A9CA21B86EAD001BBC68 /* AccountTarget.swift in Sources */,
+				4FBF5F9921B990D90030DFF5 /* Attendees.swift in Sources */,
 				4FD8A9D721B88A99001BBC68 /* Events.swift in Sources */,
 				4F8425BA21B920DF004F6959 /* EventsTableViewCell.swift in Sources */,
 				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
