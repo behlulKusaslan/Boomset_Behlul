@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  Events.swift
 //  Boomset_behlul
 //
 //  Created by behlul on 6.12.2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event: Codable {
+struct Events: Codable {
     let count: Int
     let results: [EventResult]
 }

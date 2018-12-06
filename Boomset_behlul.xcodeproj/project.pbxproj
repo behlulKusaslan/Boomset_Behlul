@@ -19,7 +19,7 @@
 		4FD8A9CE21B8824D001BBC68 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CD21B8824D001BBC68 /* Events.storyboard */; };
 		4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CF21B88367001BBC68 /* EventsViewController.swift */; };
 		4FD8A9D321B8843F001BBC68 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9D221B8843F001BBC68 /* Identifiable.swift */; };
-		4FD8A9D721B88A99001BBC68 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9D621B88A99001BBC68 /* Event.swift */; };
+		4FD8A9D721B88A99001BBC68 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9D621B88A99001BBC68 /* Events.swift */; };
 		4FD8A9D921B88CCE001BBC68 /* EventTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9D821B88CCE001BBC68 /* EventTarget.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		4FD8A9CD21B8824D001BBC68 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		4FD8A9CF21B88367001BBC68 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		4FD8A9D221B8843F001BBC68 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		4FD8A9D621B88A99001BBC68 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		4FD8A9D621B88A99001BBC68 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		4FD8A9D821B88CCE001BBC68 /* EventTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTarget.swift; sourceTree = "<group>"; };
 		515F00959A4CE859280092BD /* Pods-Boomset_behlul.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomset_behlul.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomset_behlul/Pods-Boomset_behlul.release.xcconfig"; sourceTree = "<group>"; };
 		D21BF30F293EF11292DCA22F /* Pods_Boomset_behlul.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomset_behlul.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD8A9C721B86E12001BBC68 /* LoginResult.swift */,
-				4FD8A9D621B88A99001BBC68 /* Event.swift */,
+				4FD8A9D621B88A99001BBC68 /* Events.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FD8A9CA21B86EAD001BBC68 /* AccountTarget.swift in Sources */,
-				4FD8A9D721B88A99001BBC68 /* Event.swift in Sources */,
+				4FD8A9D721B88A99001BBC68 /* Events.swift in Sources */,
 				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
 				4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */,
 				4FD8A9D921B88CCE001BBC68 /* EventTarget.swift in Sources */,

@@ -18,26 +18,39 @@ class EventsViewController: UIViewController {
         didSet {
             switch state {
             case .loading:
-                break
+                tableView.isHidden = true
+                messageView.isHidden = false
             case .ready:
-                break
+                tableView.isHidden = false
+                messageView.isHidden = true
+                tableView.reloadData()
             case .error:
-                break
+                tableView.isHidden = true
+                messageView.isHidden = false
             }
         }
     }
     
+    // MARK: - Outlets
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var messageView: UIView!
+    @IBOutlet weak private var messageLabel: UILabel!
+    @IBOutlet weak private var messageImage: UIImageView!
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        state = .loading
 
+        // get events list
         eventProvider.request(.listEvents) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let response):
                 do {
-                    let event = try response.map(Event.self, failsOnEmptyData: false)
-                    debugPrint(event)
+                    let events = try response.map(Events.self, failsOnEmptyData: false)
+                    strongSelf.state = .ready(events)
                 } catch {
                     print("response map error")
                 }
@@ -50,6 +63,34 @@ class EventsViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDelegate
+extension EventsViewController: UITableViewDelegate {
+    
+}
+
+// MARK: - UITableViewDataSource
+extension EventsViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard case .ready(let events) = state else { return 0 }
+        return events.results.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        guard case .ready(let events) = state else { return cell }
+        let nameText = events.results[indexPath.row].name
+        cell.textLabel?.text = nameText
+        return cell
+    }
+    
+    
+}
+
 // MARK: - Identifiable
 extension EventsViewController: Identifiable {
     
@@ -59,7 +100,7 @@ extension EventsViewController: Identifiable {
 extension EventsViewController {
     enum State {
         case loading
-        case ready(Event)
+        case ready(Events)
         case error(String)
     }
 }
