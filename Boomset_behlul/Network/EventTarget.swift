@@ -1,39 +1,38 @@
 //
-//  Account.swift
+//  EventTarget.swift
 //  Boomset_behlul
 //
-//  Created by behlul on 5.12.2018.
+//  Created by behlul on 6.12.2018.
 //  Copyright © 2018 behlul. All rights reserved.
 //
 
 import Foundation
 import Moya
 
-public enum Account {
+public enum EventTarget {
     
     static var authKey: String {
         return UserDefaults.standard.string(forKey: UserDefaultsKey.AUTH_KEY) ?? ""
     }
     
-    case login(userName: String, password: String)
+    case listEvents
     
 }
 
-extension Account: TargetType {
-    
+extension EventTarget: TargetType {
     public var baseURL: URL {
         return URL(string: "https://www.boomset.com")!
     }
     
     public var path: String {
         switch self {
-        case .login: return "/apps/api/auth"
+        case .listEvents: return "/apps/api/events"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login: return .post
+        case .listEvents: return .get
         }
     }
     
@@ -43,18 +42,16 @@ extension Account: TargetType {
     
     public var task: Task {
         switch self {
-        case .login(let userName, let password):
-            return .requestParameters(parameters: ["username": userName, "password": password], encoding: JSONEncoding.default)
+        case .listEvents: return .requestPlain
         }
-        //    return .requestPlain
     }
     
     public var headers: [String : String]? {
         return [
             "Content-Type" : "application/json",
-            "Authorization" : Account.authKey
+            "Authorization" : "Token \(AccountTarget.authKey)"
         ]
     }
     
+    
 }
-

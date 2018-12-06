@@ -11,11 +11,11 @@ import Moya
 
 class LogInViewController: UIViewController {
     
-    // MARK: - IBOutlet
+    // MARK: - Outlets
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    fileprivate let accountProvider = MoyaProvider<Account>()
+    fileprivate let accountProvider = MoyaProvider<AccountTarget>()
 
     // Lifecycle
     override func viewDidLoad() {
@@ -37,6 +37,7 @@ class LogInViewController: UIViewController {
                     let loginresult = try response.map(Loginresult.self)
                     // Save token
                     UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
+                    print(AccountTarget.authKey)
                     strongSelf.goToEventsViewController()
                 } catch {
                     print("response map error")
