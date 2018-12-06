@@ -13,7 +13,6 @@
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
 		4FCE326821B867040044CF84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326721B867040044CF84 /* Assets.xcassets */; };
 		4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326921B867040044CF84 /* LaunchScreen.storyboard */; };
-		4FD8A9C621B86D51001BBC68 /* CodableResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */; };
 		4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C721B86E12001BBC68 /* LoginResult.swift */; };
 		4FD8A9CA21B86EAD001BBC68 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9C921B86EAD001BBC68 /* AccountTarget.swift */; };
 		4FD8A9CC21B87CE2001BBC68 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8A9CB21B87CE2001BBC68 /* Constant.swift */; };
@@ -33,7 +32,6 @@
 		4FCE326721B867040044CF84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FCE326A21B867040044CF84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FCE326C21B867040044CF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableResponses.swift; sourceTree = "<group>"; };
 		4FD8A9C721B86E12001BBC68 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		4FD8A9C921B86EAD001BBC68 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		4FD8A9CB21B87CE2001BBC68 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 		4FD8A9C121B8687A001BBC68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4FD8A9C521B86D51001BBC68 /* CodableResponses.swift */,
 				4FD8A9C921B86EAD001BBC68 /* AccountTarget.swift */,
 				4FD8A9D821B88CCE001BBC68 /* EventTarget.swift */,
 			);
@@ -304,7 +301,6 @@
 				4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */,
 				4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */,
 				4FD8A9D321B8843F001BBC68 /* Identifiable.swift in Sources */,
-				4FD8A9C621B86D51001BBC68 /* CodableResponses.swift in Sources */,
 				4FD8A9CC21B87CE2001BBC68 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,7 +451,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QZY3LQ388;
 				INFOPLIST_FILE = "$(SRCROOT)/Boomset_behlul/Common/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.behlulkusaslan.Boomset-behlul";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -471,7 +470,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QZY3LQ388;
 				INFOPLIST_FILE = "$(SRCROOT)/Boomset_behlul/Common/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.behlulkusaslan.Boomset-behlul";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

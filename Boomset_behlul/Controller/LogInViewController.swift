@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     
     fileprivate let accountProvider = MoyaProvider<AccountTarget>()
 
-    // Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

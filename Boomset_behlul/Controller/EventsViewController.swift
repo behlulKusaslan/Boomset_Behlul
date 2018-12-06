@@ -27,6 +27,7 @@ class EventsViewController: UIViewController {
         }
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,8 +36,6 @@ class EventsViewController: UIViewController {
             switch result {
             case .success(let response):
                 do {
-                    print(try response.filterSuccessfulStatusCodes().mapJSON())
-                    print(try response.mapJSON())
                     let event = try response.map(Event.self, failsOnEmptyData: false)
                     debugPrint(event)
                 } catch {
@@ -56,10 +55,11 @@ extension EventsViewController: Identifiable {
     
 }
 
+// MARK: - State
 extension EventsViewController {
     enum State {
         case loading
-        case ready([Event])
+        case ready(Event)
         case error(String)
     }
 }
