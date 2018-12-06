@@ -37,11 +37,9 @@ class LogInViewController: UIViewController {
             switch result {
             case .success(let response):
                 do {
-                    print(try response.mapJSON())
                     let loginresult = try response.map(Loginresult.self)
                     // Save token
                     UserDefaults.standard.set(loginresult.token, forKey: UserDefaultsKey.AUTH_KEY)
-                    print(AccountTarget.authKey)
                     strongSelf.goToEventsViewController()
                 } catch {
                     print("response map error")

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0F995590789A65D70EDCBBDF /* Pods_Boomset_behlul.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21BF30F293EF11292DCA22F /* Pods_Boomset_behlul.framework */; };
 		4F8425B221B90CB9004F6959 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F8425B421B90CB9004F6959 /* Localizable.strings */; };
+		4F8425BA21B920DF004F6959 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8425B821B920DF004F6959 /* EventsTableViewCell.swift */; };
+		4F8425BE21B929C6004F6959 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */; };
+		4FB5F51021B932980041375F /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F50F21B932980041375F /* XibLoadable.swift */; };
 		4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326021B867020044CF84 /* AppDelegate.swift */; };
 		4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326221B867020044CF84 /* LogInViewController.swift */; };
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
@@ -30,6 +33,9 @@
 		4F8425B521B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/Main.strings"; sourceTree = "<group>"; };
 		4F8425B621B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		4F8425B721B90D4A004F6959 /* tr-TR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "tr-TR"; path = "tr-TR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4F8425B821B920DF004F6959 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
+		4FB5F50F21B932980041375F /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
 		4FCE325D21B867020044CF84 /* Boomset_behlul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomset_behlul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCE326021B867020044CF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCE326221B867020044CF84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +90,15 @@
 				4F8425B421B90CB9004F6959 /* Localizable.strings */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4F8425BC21B920E9004F6959 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F8425B821B920DF004F6959 /* EventsTableViewCell.swift */,
+				4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4FCE325421B867020044CF84 = {
@@ -157,6 +172,7 @@
 		4FD8A9C221B86888001BBC68 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F8425BC21B920E9004F6959 /* Cell */,
 				4FD8A9C421B868D3001BBC68 /* Storyboard */,
 			);
 			path = View;
@@ -186,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD8A9D221B8843F001BBC68 /* Identifiable.swift */,
+				4FB5F50F21B932980041375F /* XibLoadable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -253,6 +270,7 @@
 			files = (
 				4F8425B221B90CB9004F6959 /* Localizable.strings in Resources */,
 				4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */,
+				4F8425BE21B929C6004F6959 /* EventsTableViewCell.xib in Resources */,
 				4FD8A9CE21B8824D001BBC68 /* Events.storyboard in Resources */,
 				4FCE326821B867040044CF84 /* Assets.xcassets in Resources */,
 				4FCE326621B867020044CF84 /* Main.storyboard in Resources */,
@@ -311,11 +329,13 @@
 			files = (
 				4FD8A9CA21B86EAD001BBC68 /* AccountTarget.swift in Sources */,
 				4FD8A9D721B88A99001BBC68 /* Events.swift in Sources */,
+				4F8425BA21B920DF004F6959 /* EventsTableViewCell.swift in Sources */,
 				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
 				4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */,
 				4FD8A9D921B88CCE001BBC68 /* EventTarget.swift in Sources */,
 				4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */,
 				4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */,
+				4FB5F51021B932980041375F /* XibLoadable.swift in Sources */,
 				4FD8A9D321B8843F001BBC68 /* Identifiable.swift in Sources */,
 				4FD8A9CC21B87CE2001BBC68 /* Constant.swift in Sources */,
 			);

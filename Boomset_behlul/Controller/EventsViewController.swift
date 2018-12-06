@@ -70,6 +70,14 @@ class EventsViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension EventsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: Go to attendees view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -85,10 +93,9 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier) as? EventsTableViewCell ?? EventsTableViewCell()
         guard case .ready(let events) = state else { return cell }
-        let nameText = events.results[indexPath.row].name
-        cell.textLabel?.text = nameText
+        cell.configureCell(with: events.results[indexPath.row])
         return cell
     }
     
