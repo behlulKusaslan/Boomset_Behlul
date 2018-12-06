@@ -16,6 +16,7 @@ public enum EventTarget {
     }
     
     case listEvents
+    case attendees(eventId: Int, page: Int)
     
 }
 
@@ -27,12 +28,13 @@ extension EventTarget: TargetType {
     public var path: String {
         switch self {
         case .listEvents: return "/apps/api/events"
+        case .attendees(let eventId, let page): return "/apps/api/events/\(eventId)/attendees?\(page)"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .listEvents: return .get
+        case .listEvents, .attendees(_,_): return .get
         }
     }
     
@@ -42,7 +44,7 @@ extension EventTarget: TargetType {
     
     public var task: Task {
         switch self {
-        case .listEvents: return .requestPlain
+        case .listEvents, .attendees(_,_): return .requestPlain
         }
     }
     
