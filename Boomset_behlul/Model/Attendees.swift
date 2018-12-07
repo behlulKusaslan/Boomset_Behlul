@@ -12,15 +12,15 @@ struct Attendees: Codable {
     let count: Int
     let previous: String?
     let next: String?
-    let results: [AttendeesResult]
+    var results: [AttendeesResult]
 }
 
 struct AttendeesResult: Codable {
     let id: Int
-//    let contact: []
-//    let workInfo: []
+    let contact: AttendeesContact
+    let workInfo: AttendeesWorkInfo
 //    let answers: []
-//    let checkinInfo: []
+//    let checkInInfo: []
 //    let transaction: []
     let quantity: Int
     let total: String
@@ -29,11 +29,11 @@ struct AttendeesResult: Codable {
     let modified: String
     
     enum CodingKeys: String, CodingKey {
-//        case workInfo = "work_info"
+        case workInfo = "work_info"
 //        case checkinInfo = "checkin_info"
         
         case id
-//        case contact
+        case contact
 //        case answers
 //        case transaction
         case quantity
@@ -42,4 +42,18 @@ struct AttendeesResult: Codable {
         case created
         case modified
     }
+}
+
+struct AttendeesContact: Codable {
+    let prefix: String?
+    let first_name: String
+    let last_name: String
+    let email: String
+}
+
+struct AttendeesWorkInfo: Codable {
+    let website: String?
+    let fax: String?
+    let title: String?
+    let company: String
 }

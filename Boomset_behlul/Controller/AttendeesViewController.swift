@@ -12,6 +12,7 @@ import Moya
 class AttendeesViewController: UIViewController {
     
     var eventId: Int!
+    var page = 1
     
     let eventProvider = MoyaProvider<EventTarget>()
     
@@ -48,15 +49,30 @@ class AttendeesViewController: UIViewController {
         super.viewDidLoad()
 
         state = .loading
-        
-        eventProvider.request(.attendees(eventId: eventId, page: 2)) { [weak self] (result) in
+        getAttendeesList()
+    }
+    
+    // MARK: - Function
+    fileprivate func getAttendeesList() {
+        eventProvider.request(.attendees(eventId: eventId, page: page)) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let response):
                 debugPrint(response.request)
                 do {
                     debugPrint(try response.mapJSON())
-                    let attendees = try response.map(Attendees.self, failsOnEmptyData: false)
+                    var attendees = try response.map(Attendees.self, failsOnEmptyData: false)
+                    // get previus attendees and add new attendees
+                    if case .ready(let oldAttendees) = strongSelf.state {
+                        var results = oldAttendees.results
+                        results.append(contentsOf: attendees.results)
+                        attendees.results = results
+                    }
+                    strongSelf.state = .ready(attendees)
+                    // update page number if next exist
+                    if attendees.next != nil {
+                        strongSelf.page += 1
+                    }
                     debugPrint(attendees)
                 } catch {
                     strongSelf.state = .error("attendees map error")
@@ -65,7 +81,12 @@ class AttendeesViewController: UIViewController {
                 strongSelf.state = .error(error.localizedDescription)
             }
         }
-        
+    }
+    
+    fileprivate func fetchkIfMoreDataExist(indexPath: IndexPath, attendees: Attendees) {
+        guard indexPath.row == attendees.results.count - 1,
+            attendees.count > attendees.results.count else { return }
+        getAttendeesList()
     }
 
 }
@@ -77,11 +98,17 @@ extension AttendeesViewController: UITableViewDelegate {
 
 extension AttendeesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard case .ready(let attendees) = state else { return 0 }
+        return attendees.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        guard case .ready(let attendees) = state else { return cell }
+        fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendees)
+        let fullName = "\(attendees.results[indexPath.row].contact.first_name) \(attendees.results[indexPath.row].contact.last_name)"
+        cell.textLabel?.text = fullName
+        return cell
     }
     
     
@@ -91,7 +118,7 @@ extension AttendeesViewController: UITableViewDataSource {
 extension AttendeesViewController {
     enum State {
         case loading
-        case ready(Events) // TODO: change into attendees
+        case ready(Attendees)
         case error(String)
     }
 }
