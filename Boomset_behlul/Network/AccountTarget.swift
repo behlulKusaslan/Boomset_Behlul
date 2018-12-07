@@ -46,7 +46,6 @@ extension AccountTarget: TargetType {
         case .login(let userName, let password):
             return .requestParameters(parameters: ["username": userName, "password": password], encoding: JSONEncoding.default)
         }
-        //    return .requestPlain
     }
     
     public var headers: [String : String]? {

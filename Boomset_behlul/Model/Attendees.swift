@@ -8,6 +8,8 @@
 
 import Foundation
 
+// All proporties not implemented
+
 struct Attendees: Codable {
     let count: Int
     let previous: String?
@@ -19,9 +21,9 @@ struct AttendeesResult: Codable {
     let id: Int
     let contact: AttendeesContact
     let workInfo: AttendeesWorkInfo
-//    let answers: []
-//    let checkInInfo: []
-//    let transaction: []
+    //let answers: []
+    //let checkInInfo: []
+    //let transaction: []
     let quantity: Int
     let total: String
     let paid: Int
@@ -30,12 +32,12 @@ struct AttendeesResult: Codable {
     
     enum CodingKeys: String, CodingKey {
         case workInfo = "work_info"
-//        case checkinInfo = "checkin_info"
+        //case checkinInfo = "checkin_info"
         
         case id
         case contact
-//        case answers
-//        case transaction
+        //case answers
+        //case transaction
         case quantity
         case total
         case paid

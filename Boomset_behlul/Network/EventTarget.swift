@@ -29,7 +29,6 @@ extension EventTarget: TargetType {
         switch self {
         case .listEvents: return "/apps/api/events"
         case .attendees(let eventId,_): return "/apps/api/events/\(eventId)/attendees"
-        //case .attendees(let eventId, let page): return "/apps/api/events/\(eventId)/attendees"
         }
     }
     
@@ -46,7 +45,6 @@ extension EventTarget: TargetType {
     public var task: Task {
         switch self {
         case .listEvents: return .requestPlain
-        // TODO: test this later
         case .attendees(_, let page): return  .requestParameters(parameters: ["page" : page], encoding: URLEncoding.default)
         }
     }

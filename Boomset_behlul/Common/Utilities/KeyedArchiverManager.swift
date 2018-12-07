@@ -10,8 +10,10 @@ import Foundation
 
 class KeyedArchiverManager {
     
-    // singleton
+    // Singleton
     static let shared = KeyedArchiverManager()
+    
+    private init() { }
     
     func writeAttendeesResult(_ arrayToSave: [AttendeesResult], for eventId: Int) {
         for objectToSave in arrayToSave {
