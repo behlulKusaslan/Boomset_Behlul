@@ -13,70 +13,41 @@ class KeyedArchiverManager {
     // singleton
     static let shared = KeyedArchiverManager()
     
-    let mutableData = NSMutableData()
-    
-    private func documentsDirectory() -> NSString {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentDirectory = paths[0] as NSString
-        return documentDirectory
-    }
-    
-    func writeAttendeesResult(_ arrayToSave: [AttendeesResult]) {
-        let archiver = NSKeyedArchiver(forWritingWith: mutableData)
+    func writeAttendeesResult(_ arrayToSave: [AttendeesResult], for eventId: Int) {
         for objectToSave in arrayToSave {
-            do {
-                if isSaved(for: objectToSave) {
-                    continue
-                }
-                let keyToSave = "\(objectToSave.id)"
-                try archiver.encodeEncodable(objectToSave, forKey: keyToSave)
-                saveAttendeesResultKey(keyToSave)
-            } catch {
-                print("archiver error")
+            let keyToSave = "\(eventId)+\(objectToSave.id)"
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(objectToSave) {
+                UserDefaults.standard.set(encoded, forKey: keyToSave)
+                saveAttendeesResultKey(keyToSave, for: eventId)
             }
         }
-        archiver.finishEncoding()
     }
     
-    func readAttendeesResult() -> [AttendeesResult] {
+    func readAttendeesResult(for eventId: Int) -> [AttendeesResult] {
+        let eventKey = UserDefaultsKey.ARCHIVER_ATTENDEES + "+\(eventId)"
         var attendeesResults = [AttendeesResult]()
-        let unarchiver = NSKeyedUnarchiver(forReadingWith: mutableData as Data)
-        for key in UserDefaults.standard.stringArray(forKey: UserDefaultsKey.ARCHIVER_ATTENDEES) ?? [String]() {
-            do {
-                if let attendeesResult = try unarchiver.decodeTopLevelDecodable(AttendeesResult.self, forKey: key) {
-                    print("deserialized attendees output: \(attendeesResult)")
-                    attendeesResults.append(attendeesResult)
-                }
-            } catch {
-                print("unarchiving failure: \(error)")
+        let decoder = JSONDecoder()
+        for key in UserDefaults.standard.stringArray(forKey: eventKey) ?? [String]() {
+            if let attendeesData = UserDefaults.standard.data(forKey: key),
+                let attendeesResult = try? decoder.decode(AttendeesResult.self, from: attendeesData) {
+                attendeesResults.append(attendeesResult)
             }
         }
-        return attendeesResults
+        return attendeesResults.sorted { $0.modified < $1.modified }
     }
     
-    private func isSaved(for attendeesresult: AttendeesResult) -> Bool {
-        let unarchiver = NSKeyedUnarchiver(forReadingWith: mutableData as Data)
-        let key = String(attendeesresult.id)
-        do {
-            if let _ = try unarchiver.decodeTopLevelDecodable(AttendeesResult.self, forKey: key) {
-                return true
-            }
-            return false
-        } catch {
-            return false
-        }
-    }
-    
-    private func saveAttendeesResultKey(_ newKey: String) {
-        if var previusKeys = UserDefaults.standard.stringArray(forKey: UserDefaultsKey.ARCHIVER_ATTENDEES) {
+    private func saveAttendeesResultKey(_ newKey: String, for eventId: Int) {
+        let eventKey = UserDefaultsKey.ARCHIVER_ATTENDEES + "+\(eventId)"
+        if var previusKeys = UserDefaults.standard.stringArray(forKey: eventKey) {
             previusKeys = previusKeys.filter { $0 != newKey }
             previusKeys.append(newKey)
-            UserDefaults.standard.set(previusKeys, forKey: UserDefaultsKey.ARCHIVER_ATTENDEES)
+            UserDefaults.standard.set(previusKeys, forKey: eventKey)
         } else {
             let keyToSaveArray = [newKey]
-            UserDefaults.standard.set(keyToSaveArray, forKey: UserDefaultsKey.ARCHIVER_ATTENDEES)
+            UserDefaults.standard.set(keyToSaveArray, forKey: eventKey)
         }
-        debugPrint(UserDefaults.standard.stringArray(forKey: UserDefaultsKey.ARCHIVER_ATTENDEES) ?? [String]())
+        debugPrint(UserDefaults.standard.stringArray(forKey: eventKey) ?? [String]())
     }
     
 }
