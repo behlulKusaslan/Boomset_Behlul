@@ -34,6 +34,10 @@ class AttendeesViewController: UIViewController {
                 messageView.isHidden = false
                 messageImage.image = UIImage(named: "error_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
+            case .noConnection:
+                tableView.isHidden = false
+                messageView.isHidden = true
+                tableView.reloadData()
             }
         }
     }
@@ -76,7 +80,6 @@ class AttendeesViewController: UIViewController {
             }
             // for test. save results
             KeyedArchiverManager.shared.writeAttendeesResult(attendees.results)
-            debugPrint(KeyedArchiverManager.shared.readAttendeesResult())
             state = .ready(attendees)
             // update page number if next exist
             if attendees.next != nil {
@@ -124,6 +127,7 @@ extension AttendeesViewController {
         case loading
         case ready(Attendees)
         case error(String)
+        case noConnection
     }
 }
 
