@@ -18,24 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-Uy-4g8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EventsTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventsTableViewCell" rowHeight="60" id="YKG-WC-5UV" customClass="EventsTableViewCell" customModule="Boomset_behlul" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YKG-WC-5UV" id="Txc-lV-Tnn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="j1P-6M-8gg" id="hpZ-9c-8cK"/>
-                                    <outlet property="delegate" destination="j1P-6M-8gg" id="vGh-rP-exx"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz4-Rr-5Db">
                                 <rect key="frame" x="75" y="200" width="225" height="267"/>
                                 <subviews>
@@ -60,6 +42,24 @@
                                     <constraint firstItem="1LE-au-Ern" firstAttribute="leading" secondItem="Hz4-Rr-5Db" secondAttribute="leading" constant="8" id="s3j-4s-YHd"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-Uy-4g8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EventsTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventsTableViewCell" rowHeight="60" id="YKG-WC-5UV" customClass="EventsTableViewCell" customModule="Boomset_behlul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YKG-WC-5UV" id="Txc-lV-Tnn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="j1P-6M-8gg" id="hpZ-9c-8cK"/>
+                                    <outlet property="delegate" destination="j1P-6M-8gg" id="vGh-rP-exx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -87,28 +87,76 @@
             </objects>
             <point key="canvasLocation" x="1220" y="60.719640179910051"/>
         </scene>
-        <!--View Controller-->
+        <!--Attendees View Controller-->
         <scene sceneID="AcQ-jB-dlt">
             <objects>
-                <viewController id="wUq-hk-urm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AttendeesViewController" id="wUq-hk-urm" customClass="AttendeesViewController" customModule="Boomset_behlul" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s3w-IG-0kF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON1-2u-3bg">
+                                <rect key="frame" x="75" y="200" width="225" height="267"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="loading_panda" translatesAutoresizingMaskIntoConstraints="NO" id="Yg6-mC-z0j">
+                                        <rect key="frame" x="8" y="8" width="209" height="201"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWU-4c-Nut">
+                                        <rect key="frame" x="8" y="233" width="209" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Yg6-mC-z0j" secondAttribute="trailing" constant="8" id="2Pn-rH-5Kx"/>
+                                    <constraint firstItem="YWU-4c-Nut" firstAttribute="top" secondItem="Yg6-mC-z0j" secondAttribute="bottom" constant="24" id="Ctz-Nf-xHZ"/>
+                                    <constraint firstItem="Yg6-mC-z0j" firstAttribute="top" secondItem="ON1-2u-3bg" secondAttribute="top" constant="8" id="QqO-QA-4nE"/>
+                                    <constraint firstItem="Yg6-mC-z0j" firstAttribute="leading" secondItem="ON1-2u-3bg" secondAttribute="leading" constant="8" id="aqv-a4-ESM"/>
+                                    <constraint firstItem="YWU-4c-Nut" firstAttribute="leading" secondItem="ON1-2u-3bg" secondAttribute="leading" constant="8" id="dN5-nC-zSl"/>
+                                    <constraint firstAttribute="bottom" secondItem="YWU-4c-Nut" secondAttribute="bottom" constant="16" id="hdL-Sa-IIk"/>
+                                    <constraint firstAttribute="trailing" secondItem="YWU-4c-Nut" secondAttribute="trailing" constant="8" id="i5g-te-94H"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bQw-0q-zOy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="A4d-2t-fgf">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A4d-2t-fgf" id="evV-k3-N5y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wUq-hk-urm" id="IPB-1t-OQb"/>
+                                    <outlet property="delegate" destination="wUq-hk-urm" id="r9e-Mm-KiD"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ON1-2u-3bg" firstAttribute="height" secondItem="s3w-IG-0kF" secondAttribute="height" multiplier="0.4" id="5G2-Rl-N2l"/>
+                            <constraint firstItem="ON1-2u-3bg" firstAttribute="width" secondItem="s3w-IG-0kF" secondAttribute="width" multiplier="0.6" id="7ue-kQ-OsK"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="bottom" secondItem="bQw-0q-zOy" secondAttribute="bottom" id="9gz-uP-rQJ"/>
                             <constraint firstItem="bQw-0q-zOy" firstAttribute="leading" secondItem="Xuy-yu-gA7" secondAttribute="leading" id="B39-na-NHF"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="trailing" secondItem="bQw-0q-zOy" secondAttribute="trailing" id="MsF-G4-oqX"/>
+                            <constraint firstItem="ON1-2u-3bg" firstAttribute="centerX" secondItem="s3w-IG-0kF" secondAttribute="centerX" id="QlF-p7-5cP"/>
                             <constraint firstItem="bQw-0q-zOy" firstAttribute="top" secondItem="Xuy-yu-gA7" secondAttribute="top" id="XQk-Gj-pbk"/>
+                            <constraint firstItem="ON1-2u-3bg" firstAttribute="centerY" secondItem="s3w-IG-0kF" secondAttribute="centerY" id="ljK-LB-gEM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xuy-yu-gA7"/>
                     </view>
+                    <connections>
+                        <outlet property="messageImage" destination="Yg6-mC-z0j" id="JlQ-ui-8Ki"/>
+                        <outlet property="messageLabel" destination="YWU-4c-Nut" id="4Ck-uR-Ar0"/>
+                        <outlet property="messageView" destination="ON1-2u-3bg" id="kqw-Wz-sbY"/>
+                        <outlet property="tableView" destination="bQw-0q-zOy" id="Ls5-7f-FnE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekq-y0-LRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

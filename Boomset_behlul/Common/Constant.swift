@@ -11,6 +11,7 @@ import UIKit
 
 struct UserDefaultsKey {
     static let AUTH_KEY = "AuthKey"
+    static let ARCHIVER_ATTENDEES = "archiverAttendeesKey"
 }
 
 extension UIStoryboard {

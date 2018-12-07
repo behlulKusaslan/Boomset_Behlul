@@ -46,8 +46,11 @@ class EventsViewController: UIViewController {
         super.viewDidLoad()
         
         state = .loading
-
-        // get events list
+        getEventsList()
+    }
+    
+    // MARK: - Function
+    fileprivate func getEventsList() {
         eventProvider.request(.listEvents) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
@@ -62,7 +65,15 @@ class EventsViewController: UIViewController {
                 strongSelf.state = .error(error.errorDescription ?? "")
             }
         }
-        
+    }
+    
+    fileprivate func goToAttendeesViewController(with eventId: Int) {
+        let storyboardName = UIStoryboard.Storyboard.events.filename
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        if let destinationViewController = storyboard.instantiateViewController(withIdentifier: AttendeesViewController.identifier) as? AttendeesViewController {
+            destinationViewController.eventId = eventId
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
+        }
     }
 
 }
@@ -71,7 +82,10 @@ class EventsViewController: UIViewController {
 extension EventsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Go to attendees view
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard case .ready(let events) = state else { return }
+        let eventId = events.results[indexPath.row].id
+        goToAttendeesViewController(with: eventId)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -104,7 +118,7 @@ extension EventsViewController: UITableViewDataSource {
 
 // MARK: - Identifiable
 extension EventsViewController: Identifiable {
-    
+    // Sets identifier variable based on class name
 }
 
 // MARK: - State
