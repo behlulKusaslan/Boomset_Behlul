@@ -58,28 +58,32 @@ class AttendeesViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let response):
-                debugPrint(response.request)
-                do {
-                    debugPrint(try response.mapJSON())
-                    var attendees = try response.map(Attendees.self, failsOnEmptyData: false)
-                    // get previus attendees and add new attendees
-                    if case .ready(let oldAttendees) = strongSelf.state {
-                        var results = oldAttendees.results
-                        results.append(contentsOf: attendees.results)
-                        attendees.results = results
-                    }
-                    strongSelf.state = .ready(attendees)
-                    // update page number if next exist
-                    if attendees.next != nil {
-                        strongSelf.page += 1
-                    }
-                    debugPrint(attendees)
-                } catch {
-                    strongSelf.state = .error("attendees map error")
-                }
+                strongSelf.handleSuccess(with: response)
             case .failure(let error):
                 strongSelf.state = .error(error.localizedDescription)
             }
+        }
+    }
+    
+    fileprivate func handleSuccess(with response: Response) {
+        do {
+            var attendees = try response.map(Attendees.self, failsOnEmptyData: false)
+            // get previus attendees and add new attendees
+            if case .ready(let oldAttendees) = state {
+                var results = oldAttendees.results
+                results.append(contentsOf: attendees.results)
+                attendees.results = results
+            }
+            // for test. save results
+            KeyedArchiverManager.shared.writeAttendeesResult(attendees.results)
+            debugPrint(KeyedArchiverManager.shared.readAttendeesResult())
+            state = .ready(attendees)
+            // update page number if next exist
+            if attendees.next != nil {
+                page += 1
+            }
+        } catch {
+            state = .error("attendees map error")
         }
     }
     

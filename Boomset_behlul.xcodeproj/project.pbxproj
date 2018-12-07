@@ -14,6 +14,7 @@
 		4FB5F51021B932980041375F /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F50F21B932980041375F /* XibLoadable.swift */; };
 		4FB5F51221B93E3F0041375F /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */; };
 		4FBF5F9921B990D90030DFF5 /* Attendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5F9821B990D90030DFF5 /* Attendees.swift */; };
+		4FBF5F9B21BA45330030DFF5 /* KeyedArchiverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5F9A21BA45330030DFF5 /* KeyedArchiverManager.swift */; };
 		4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326021B867020044CF84 /* AppDelegate.swift */; };
 		4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326221B867020044CF84 /* LogInViewController.swift */; };
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		4FB5F50F21B932980041375F /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
 		4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
 		4FBF5F9821B990D90030DFF5 /* Attendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendees.swift; sourceTree = "<group>"; };
+		4FBF5F9A21BA45330030DFF5 /* KeyedArchiverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedArchiverManager.swift; sourceTree = "<group>"; };
 		4FCE325D21B867020044CF84 /* Boomset_behlul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomset_behlul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCE326021B867020044CF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCE326221B867020044CF84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				4F8425B421B90CB9004F6959 /* Localizable.strings */,
+				4FBF5F9A21BA45330030DFF5 /* KeyedArchiverManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB5F51221B93E3F0041375F /* AttendeesViewController.swift in Sources */,
+				4FBF5F9B21BA45330030DFF5 /* KeyedArchiverManager.swift in Sources */,
 				4FD8A9CA21B86EAD001BBC68 /* AccountTarget.swift in Sources */,
 				4FBF5F9921B990D90030DFF5 /* Attendees.swift in Sources */,
 				4FD8A9D721B88A99001BBC68 /* Events.swift in Sources */,
