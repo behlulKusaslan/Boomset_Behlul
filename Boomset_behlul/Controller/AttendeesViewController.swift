@@ -52,8 +52,14 @@ class AttendeesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // for test offline data, set state to noConnection
+        //state = .noConnection
+        
         state = .loading
-        getAttendeesList()
+        if case .loading = state {
+            getAttendeesList()
+        }
+        
     }
     
     // MARK: - Function
@@ -78,8 +84,8 @@ class AttendeesViewController: UIViewController {
                 results.append(contentsOf: attendees.results)
                 attendees.results = results
             }
-            // for test. save results
-            KeyedArchiverManager.shared.writeAttendeesResult(attendees.results)
+            // save results
+            KeyedArchiverManager.shared.writeAttendeesResult(attendees.results, for: eventId)
             state = .ready(attendees)
             // update page number if next exist
             if attendees.next != nil {
@@ -105,17 +111,35 @@ extension AttendeesViewController: UITableViewDelegate {
 
 extension AttendeesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch state {
+        case .ready(let attendees):
+            return attendees.results.count
+        case .noConnection:
+            let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
+            return attendeesResults.count
+        default:
+            return 0
+        }
         guard case .ready(let attendees) = state else { return 0 }
         return attendees.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        guard case .ready(let attendees) = state else { return cell }
-        fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendees)
-        let fullName = "\(attendees.results[indexPath.row].contact.first_name) \(attendees.results[indexPath.row].contact.last_name)"
-        cell.textLabel?.text = fullName
-        return cell
+        switch state {
+        case .ready(let attendees):
+            fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendees)
+            let fullName = "\(attendees.results[indexPath.row].contact.first_name) \(attendees.results[indexPath.row].contact.last_name)"
+            cell.textLabel?.text = fullName
+            return cell
+        case .noConnection:
+            let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
+            let fullName = "\(attendeesResults[indexPath.row].contact.first_name) \(attendeesResults[indexPath.row].contact.last_name)"
+            cell.textLabel?.text = fullName
+            return cell
+        default:
+            return cell
+        }
     }
     
     
