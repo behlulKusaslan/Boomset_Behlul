@@ -80,6 +80,7 @@ class EventsViewController: UIViewController {
     @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem) {
         print("Log Out")
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
+        KeyedArchiverManager.shared.deleteAll()
         navigationController?.popToRootViewController(animated: true)
     }
 

@@ -26,12 +26,14 @@ class AttendeesViewController: UIViewController {
                 messageImage.image = UIImage(named: "loading_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_loading_message", comment: "")
                 noConnectionView.isHidden = true
+                searchBar.isHidden = true
                 tableviewBottomConstraint.constant = 0
             case .ready:
                 tableView.isHidden = false
                 messageView.isHidden = true
                 noConnectionView.isHidden = true
                 tableviewBottomConstraint.constant = 0
+                searchBar.isHidden = false
                 tableView.reloadData()
             case .error:
                 tableView.isHidden = true
@@ -39,12 +41,14 @@ class AttendeesViewController: UIViewController {
                 messageImage.image = UIImage(named: "error_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
                 noConnectionView.isHidden = true
+                searchBar.isHidden = true
                 tableviewBottomConstraint.constant = 0
             case .noConnection:
                 tableView.isHidden = false
                 messageView.isHidden = true
                 noConnectionView.isHidden = false
                 tableviewBottomConstraint.constant = 35
+                searchBar.isHidden = false
                 tableView.reloadData()
             }
         }
@@ -56,6 +60,7 @@ class AttendeesViewController: UIViewController {
     @IBOutlet weak private var messageLabel: UILabel!
     @IBOutlet weak private var messageImage: UIImageView!
     @IBOutlet weak private var noConnectionView: UIView!
+    @IBOutlet weak private var searchBar: UISearchBar!
     @IBOutlet weak private var tableviewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Lifecycle
@@ -69,6 +74,12 @@ class AttendeesViewController: UIViewController {
             state = .noConnection
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        dismissKeyboard()
     }
     
     // MARK: - Function
@@ -111,6 +122,10 @@ class AttendeesViewController: UIViewController {
         getAttendeesList()
     }
 
+    fileprivate func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
