@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1LE-au-Ern"; */
+"1LE-au-Ern.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Log Out"; ObjectID = "6ji-N9-kXf"; */
+"6ji-N9-kXf.title" = "Çıkış Yap";
+
+/* Class = "UILabel"; text = "No internet connection"; ObjectID = "7dX-Ip-Aub"; */
+"7dX-Ip-Aub.text" = "İnternet Bağlantısı Bulunamadı";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YWU-4c-Nut"; */
+"YWU-4c-Nut.text" = "Label";

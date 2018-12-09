@@ -143,6 +143,25 @@
                                     <outlet property="delegate" destination="wUq-hk-urm" id="r9e-Mm-KiD"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-Ve-Xax">
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dX-Ip-Aub">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="7dX-Ip-Aub" firstAttribute="top" secondItem="g8z-Ve-Xax" secondAttribute="top" id="1mi-VQ-R9Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="7dX-Ip-Aub" secondAttribute="trailing" id="48V-j6-KqD"/>
+                                    <constraint firstItem="7dX-Ip-Aub" firstAttribute="leading" secondItem="g8z-Ve-Xax" secondAttribute="leading" id="MO8-Mo-hG6"/>
+                                    <constraint firstAttribute="height" constant="35" id="V4j-bY-8Ui"/>
+                                    <constraint firstAttribute="bottom" secondItem="7dX-Ip-Aub" secondAttribute="bottom" id="riV-nm-aRV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -150,10 +169,13 @@
                             <constraint firstItem="ON1-2u-3bg" firstAttribute="width" secondItem="s3w-IG-0kF" secondAttribute="width" multiplier="0.6" id="7ue-kQ-OsK"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="bottom" secondItem="bQw-0q-zOy" secondAttribute="bottom" id="9gz-uP-rQJ"/>
                             <constraint firstItem="bQw-0q-zOy" firstAttribute="leading" secondItem="Xuy-yu-gA7" secondAttribute="leading" id="B39-na-NHF"/>
+                            <constraint firstItem="g8z-Ve-Xax" firstAttribute="leading" secondItem="Xuy-yu-gA7" secondAttribute="leading" id="Lqg-Ev-joi"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="trailing" secondItem="bQw-0q-zOy" secondAttribute="trailing" id="MsF-G4-oqX"/>
                             <constraint firstItem="ON1-2u-3bg" firstAttribute="centerX" secondItem="s3w-IG-0kF" secondAttribute="centerX" id="QlF-p7-5cP"/>
                             <constraint firstItem="bQw-0q-zOy" firstAttribute="top" secondItem="Xuy-yu-gA7" secondAttribute="top" id="XQk-Gj-pbk"/>
+                            <constraint firstItem="Xuy-yu-gA7" firstAttribute="trailing" secondItem="g8z-Ve-Xax" secondAttribute="trailing" id="cro-sq-SYk"/>
                             <constraint firstItem="ON1-2u-3bg" firstAttribute="centerY" secondItem="s3w-IG-0kF" secondAttribute="centerY" id="ljK-LB-gEM"/>
+                            <constraint firstItem="Xuy-yu-gA7" firstAttribute="bottom" secondItem="g8z-Ve-Xax" secondAttribute="bottom" id="ywc-YL-tjV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xuy-yu-gA7"/>
                     </view>
@@ -161,7 +183,9 @@
                         <outlet property="messageImage" destination="Yg6-mC-z0j" id="JlQ-ui-8Ki"/>
                         <outlet property="messageLabel" destination="YWU-4c-Nut" id="4Ck-uR-Ar0"/>
                         <outlet property="messageView" destination="ON1-2u-3bg" id="kqw-Wz-sbY"/>
+                        <outlet property="noConnectionView" destination="g8z-Ve-Xax" id="Pe0-aH-1BI"/>
                         <outlet property="tableView" destination="bQw-0q-zOy" id="Ls5-7f-FnE"/>
+                        <outlet property="tableviewBottomConstraint" destination="9gz-uP-rQJ" id="JiU-kq-cbN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekq-y0-LRe" userLabel="First Responder" sceneMemberID="firstResponder"/>

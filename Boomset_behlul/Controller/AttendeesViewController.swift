@@ -25,18 +25,26 @@ class AttendeesViewController: UIViewController {
                 messageView.isHidden = false
                 messageImage.image = UIImage(named: "loading_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_loading_message", comment: "")
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
             case .ready:
                 tableView.isHidden = false
                 messageView.isHidden = true
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
                 tableView.reloadData()
             case .error:
                 tableView.isHidden = true
                 messageView.isHidden = false
                 messageImage.image = UIImage(named: "error_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
             case .noConnection:
                 tableView.isHidden = false
                 messageView.isHidden = true
+                noConnectionView.isHidden = false
+                tableviewBottomConstraint.constant = 35
                 tableView.reloadData()
             }
         }
@@ -47,19 +55,18 @@ class AttendeesViewController: UIViewController {
     @IBOutlet weak private var messageView: UIView!
     @IBOutlet weak private var messageLabel: UILabel!
     @IBOutlet weak private var messageImage: UIImageView!
+    @IBOutlet weak private var noConnectionView: UIView!
+    @IBOutlet weak private var tableviewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(Reachability.isConnectedToNetwork())
-        
-        // for test offline data, set state to noConnection
-        //state = .noConnection
-        
-        state = .loading
-        if case .loading = state {
+        if Reachability.isConnectedToNetwork() {
+            state = .loading
             getAttendeesList()
+        } else {
+            state = .noConnection
         }
         
     }
