@@ -76,6 +76,12 @@ class EventsViewController: UIViewController {
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }
+    
+    @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem) {
+        print("Log Out")
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
+        navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 

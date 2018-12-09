@@ -21,14 +21,15 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if let _ = UserDefaults.standard.string(forKey: UserDefaultsKey.AUTH_KEY) {
+            goToEventsViewController(animated: false)
+        }
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //UserDefaults.standard.set("5994570dd4865ca5fd5a7b4ecefd5d17180d3d53", forKey: UserDefaultsKey.AUTH_KEY)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
         
         // fill textFields
         userNameTextField.text = "testaccount@boomset.com"
@@ -62,11 +63,11 @@ class LogInViewController: UIViewController {
         }
     }
     
-    fileprivate func goToEventsViewController() {
+    fileprivate func goToEventsViewController(animated: Bool = true) {
         let storyboardName = UIStoryboard.Storyboard.events.filename
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         if let destinationViewController = storyboard.instantiateViewController(withIdentifier: EventsViewController.identifier) as? EventsViewController {
-            self.navigationController?.pushViewController(destinationViewController, animated: true)
+            self.navigationController?.pushViewController(destinationViewController, animated: animated)
         }
     }
     

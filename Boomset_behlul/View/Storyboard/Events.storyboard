@@ -74,7 +74,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6lj-Ae-WZS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Pza-oZ-EZd"/>
+                    <navigationItem key="navigationItem" id="Pza-oZ-EZd">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="6ji-N9-kXf">
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="j1P-6M-8gg" id="kKx-tK-Ab4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageImage" destination="rmf-V0-bpj" id="nf6-ru-Iet"/>
                         <outlet property="messageLabel" destination="1LE-au-Ern" id="MVn-qZ-RFQ"/>
