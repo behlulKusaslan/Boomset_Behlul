@@ -125,8 +125,8 @@
                                     <constraint firstAttribute="trailing" secondItem="YWU-4c-Nut" secondAttribute="trailing" constant="8" id="i5g-te-94H"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bQw-0q-zOy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bQw-0q-zOy">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttendeesTableViewCell" rowHeight="65" id="A4d-2t-fgf" customClass="AttendeesTableViewCell" customModule="Boomset_behlul" customModuleProvider="target">
@@ -143,6 +143,13 @@
                                     <outlet property="delegate" destination="wUq-hk-urm" id="r9e-Mm-KiD"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-1M-Xcn">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wUq-hk-urm" id="1Wj-9l-9Fs"/>
+                                </connections>
+                            </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-Ve-Xax">
                                 <rect key="frame" x="0.0" y="632" width="375" height="35"/>
                                 <subviews>
@@ -172,9 +179,12 @@
                             <constraint firstItem="g8z-Ve-Xax" firstAttribute="leading" secondItem="Xuy-yu-gA7" secondAttribute="leading" id="Lqg-Ev-joi"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="trailing" secondItem="bQw-0q-zOy" secondAttribute="trailing" id="MsF-G4-oqX"/>
                             <constraint firstItem="ON1-2u-3bg" firstAttribute="centerX" secondItem="s3w-IG-0kF" secondAttribute="centerX" id="QlF-p7-5cP"/>
-                            <constraint firstItem="bQw-0q-zOy" firstAttribute="top" secondItem="Xuy-yu-gA7" secondAttribute="top" id="XQk-Gj-pbk"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="trailing" secondItem="g8z-Ve-Xax" secondAttribute="trailing" id="cro-sq-SYk"/>
+                            <constraint firstItem="bQw-0q-zOy" firstAttribute="top" secondItem="Cku-1M-Xcn" secondAttribute="bottom" id="ePr-kh-nIv"/>
+                            <constraint firstItem="Cku-1M-Xcn" firstAttribute="leading" secondItem="Xuy-yu-gA7" secondAttribute="leading" id="hT3-bj-6VZ"/>
+                            <constraint firstItem="Cku-1M-Xcn" firstAttribute="trailing" secondItem="Xuy-yu-gA7" secondAttribute="trailing" id="lhh-36-lUG"/>
                             <constraint firstItem="ON1-2u-3bg" firstAttribute="centerY" secondItem="s3w-IG-0kF" secondAttribute="centerY" id="ljK-LB-gEM"/>
+                            <constraint firstItem="Cku-1M-Xcn" firstAttribute="top" secondItem="Xuy-yu-gA7" secondAttribute="top" id="pGL-gv-olQ"/>
                             <constraint firstItem="Xuy-yu-gA7" firstAttribute="bottom" secondItem="g8z-Ve-Xax" secondAttribute="bottom" id="ywc-YL-tjV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xuy-yu-gA7"/>
@@ -184,13 +194,14 @@
                         <outlet property="messageLabel" destination="YWU-4c-Nut" id="4Ck-uR-Ar0"/>
                         <outlet property="messageView" destination="ON1-2u-3bg" id="kqw-Wz-sbY"/>
                         <outlet property="noConnectionView" destination="g8z-Ve-Xax" id="Pe0-aH-1BI"/>
+                        <outlet property="searchBar" destination="Cku-1M-Xcn" id="JN3-IL-Cf5"/>
                         <outlet property="tableView" destination="bQw-0q-zOy" id="Ls5-7f-FnE"/>
                         <outlet property="tableviewBottomConstraint" destination="9gz-uP-rQJ" id="JiU-kq-cbN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekq-y0-LRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2007" y="61"/>
+            <point key="canvasLocation" x="2005.5999999999999" y="60.719640179910051"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xLX-2d-goS">

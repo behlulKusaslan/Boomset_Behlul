@@ -51,6 +51,14 @@ class KeyedArchiverManager {
         }
     }
     
+    func deleteAll() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
+    
 }
 
 extension KeyedArchiverManager {

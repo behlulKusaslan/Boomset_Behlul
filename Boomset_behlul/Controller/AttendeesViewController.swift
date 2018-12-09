@@ -26,12 +26,14 @@ class AttendeesViewController: UIViewController {
                 messageImage.image = UIImage(named: "loading_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_loading_message", comment: "")
                 noConnectionView.isHidden = true
+                searchBar.isHidden = true
                 tableviewBottomConstraint.constant = 0
             case .ready:
                 tableView.isHidden = false
                 messageView.isHidden = true
                 noConnectionView.isHidden = true
                 tableviewBottomConstraint.constant = 0
+                searchBar.isHidden = false
                 tableView.reloadData()
             case .error:
                 tableView.isHidden = true
@@ -39,25 +41,34 @@ class AttendeesViewController: UIViewController {
                 messageImage.image = UIImage(named: "error_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
                 noConnectionView.isHidden = true
+                searchBar.isHidden = true
                 tableviewBottomConstraint.constant = 0
             case .noConnection:
                 tableView.isHidden = false
                 messageView.isHidden = true
                 noConnectionView.isHidden = false
                 tableviewBottomConstraint.constant = 35
+                searchBar.isHidden = false
                 tableView.reloadData()
             }
         }
     }
     
     // MARK: - Outlets
-    @IBOutlet weak private var tableView: UITableView!
-    @IBOutlet weak private var messageView: UIView!
-    @IBOutlet weak private var messageLabel: UILabel!
-    @IBOutlet weak private var messageImage: UIImageView!
-    @IBOutlet weak private var noConnectionView: UIView!
+    @IBOutlet weak fileprivate var tableView: UITableView!
+    @IBOutlet weak fileprivate var messageView: UIView!
+    @IBOutlet weak fileprivate var messageLabel: UILabel!
+    @IBOutlet weak fileprivate var messageImage: UIImageView!
+    @IBOutlet weak fileprivate var noConnectionView: UIView!
+    @IBOutlet weak fileprivate var searchBar: UISearchBar!
+    
+    // LayoutConstraints
     @IBOutlet weak private var tableviewBottomConstraint: NSLayoutConstraint!
-
+    
+    // Proporties
+    var isSearching = false
+    var searachedAttendees = [AttendeesResult]()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +80,12 @@ class AttendeesViewController: UIViewController {
             state = .noConnection
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        dismissKeyboard()
     }
     
     // MARK: - Function
@@ -111,10 +128,18 @@ class AttendeesViewController: UIViewController {
         getAttendeesList()
     }
 
+    fileprivate func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
 extension AttendeesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 
@@ -122,10 +147,10 @@ extension AttendeesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch state {
         case .ready(let attendees):
-            return attendees.results.count
+            return isSearching ? searachedAttendees.count : attendees.results.count
         case .noConnection:
             let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
-            return attendeesResults.count
+            return isSearching ? searachedAttendees.count : attendeesResults.count
         default:
             return 0
         }
@@ -135,12 +160,19 @@ extension AttendeesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: AttendeesTableViewCell.identifier) as? AttendeesTableViewCell ?? AttendeesTableViewCell()
         switch state {
         case .ready(let attendees):
-            fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendees)
-            cell.configureCell(with: attendees.results[indexPath.row])
+            var attendeesToShow = attendees
+            if isSearching {
+                attendeesToShow.results = searachedAttendees
+            }
+            fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendeesToShow)
+            cell.configureCell(with: attendeesToShow.results[indexPath.row])
             return cell
         case .noConnection:
-            let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
-            cell.configureCell(with: attendeesResults[indexPath.row])
+            var attendeesToShow = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
+            if isSearching {
+                attendeesToShow = searachedAttendees
+            }
+            cell.configureCell(with: attendeesToShow[indexPath.row])
             return cell
         default:
             return cell
@@ -163,4 +195,34 @@ extension AttendeesViewController {
 // MARK: - Identifiable
 extension AttendeesViewController: Identifiable {
     // Sets identifier variable based on class name
+}
+
+// MARK: - UISearchBarDelegate
+extension AttendeesViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = false
+        guard searchText.count > 3 else { return }
+        isSearching = true
+        let text = searchText.lowercased()
+        switch state {
+        case .ready(let attendees):
+            searachedAttendees = attendees.results.filter {
+                $0.contact.first_name.lowercased().contains(text) || $0.contact.last_name.lowercased().contains(text)
+            }
+        case .noConnection:
+            let offlineResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
+            searachedAttendees = offlineResults.filter {
+                $0.contact.first_name.lowercased().contains(text) || $0.contact.last_name.lowercased().contains(text)
+            }
+        default:
+            print("do nothing in this state")
+        }
+        tableView.reloadData()
+    }
+    
 }
