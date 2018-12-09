@@ -120,22 +120,18 @@ extension AttendeesViewController: UITableViewDataSource {
         default:
             return 0
         }
-        guard case .ready(let attendees) = state else { return 0 }
-        return attendees.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: AttendeesTableViewCell.identifier) as? AttendeesTableViewCell ?? AttendeesTableViewCell()
         switch state {
         case .ready(let attendees):
             fetchkIfMoreDataExist(indexPath: indexPath, attendees: attendees)
-            let fullName = "\(attendees.results[indexPath.row].contact.first_name) \(attendees.results[indexPath.row].contact.last_name)"
-            cell.textLabel?.text = fullName
+            cell.configureCell(with: attendees.results[indexPath.row])
             return cell
         case .noConnection:
             let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
-            let fullName = "\(attendeesResults[indexPath.row].contact.first_name) \(attendeesResults[indexPath.row].contact.last_name)"
-            cell.textLabel?.text = fullName
+            cell.configureCell(with: attendeesResults[indexPath.row])
             return cell
         default:
             return cell

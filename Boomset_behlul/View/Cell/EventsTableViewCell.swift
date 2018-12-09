@@ -14,9 +14,23 @@ class EventsTableViewCell: UITableViewCell, XibLoadable {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
 
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        loadViewFromXib()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        loadViewFromXib()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        loadViewFromXib()
     }
     
     fileprivate func dateToString(date: Date, format: DateFormat) -> String {
@@ -45,18 +59,6 @@ class EventsTableViewCell: UITableViewCell, XibLoadable {
         let endDateString = dateToString(date: endDate, format: .short)
         
         return "\(startDateString) - \(endDateString)"
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        loadViewFromXib()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        loadViewFromXib()
     }
     
     func configureCell(with object: EventResult) {
