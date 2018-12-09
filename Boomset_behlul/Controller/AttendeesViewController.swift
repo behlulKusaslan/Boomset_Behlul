@@ -52,6 +52,8 @@ class AttendeesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(Reachability.isConnectedToNetwork())
+        
         // for test offline data, set state to noConnection
         //state = .noConnection
         
