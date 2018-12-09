@@ -18,6 +18,12 @@ class LogInViewController: UIViewController {
     fileprivate let accountProvider = MoyaProvider<AccountTarget>()
 
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +33,12 @@ class LogInViewController: UIViewController {
         // fill textFields
         userNameTextField.text = "testaccount@boomset.com"
         passwordTextField.text = "Boomsettest123"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // MARK: - Functions

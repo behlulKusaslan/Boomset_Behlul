@@ -45,6 +45,7 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
         state = .loading
         getEventsList()
     }
@@ -112,7 +113,6 @@ extension EventsViewController: UITableViewDataSource {
         cell.configureCell(with: events.results[indexPath.row])
         return cell
     }
-    
     
 }
 
