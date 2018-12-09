@@ -150,6 +150,7 @@ extension AttendeesViewController: UITableViewDataSource {
             return isSearching ? searachedAttendees.count : attendees.results.count
         case .noConnection:
             let attendeesResults = KeyedArchiverManager.shared.readAttendeesResult(for: eventId)
+            debugPrint(attendeesResults)
             return isSearching ? searachedAttendees.count : attendeesResults.count
         default:
             return 0

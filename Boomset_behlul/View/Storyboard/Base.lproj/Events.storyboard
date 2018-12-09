@@ -60,9 +60,30 @@
                                     <outlet property="delegate" destination="j1P-6M-8gg" id="vGh-rP-exx"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWT-1n-d6s">
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUV-kK-Jvu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="C7x-hz-auz"/>
+                                    <constraint firstAttribute="bottom" secondItem="OUV-kK-Jvu" secondAttribute="bottom" id="MFo-Li-Qe6"/>
+                                    <constraint firstItem="OUV-kK-Jvu" firstAttribute="top" secondItem="KWT-1n-d6s" secondAttribute="top" id="QPo-GB-8rI"/>
+                                    <constraint firstItem="OUV-kK-Jvu" firstAttribute="leading" secondItem="KWT-1n-d6s" secondAttribute="leading" id="tdg-8c-YmG"/>
+                                    <constraint firstAttribute="trailing" secondItem="OUV-kK-Jvu" secondAttribute="trailing" id="xQQ-BH-BxT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KWT-1n-d6s" firstAttribute="trailing" secondItem="6lj-Ae-WZS" secondAttribute="trailing" id="0y2-AJ-b9r"/>
+                            <constraint firstItem="KWT-1n-d6s" firstAttribute="leading" secondItem="6lj-Ae-WZS" secondAttribute="leading" id="1bd-MI-HNa"/>
                             <constraint firstItem="6lj-Ae-WZS" firstAttribute="trailing" secondItem="TPe-Uy-4g8" secondAttribute="trailing" id="2nK-L1-bK2"/>
                             <constraint firstItem="TPe-Uy-4g8" firstAttribute="top" secondItem="6lj-Ae-WZS" secondAttribute="top" id="G9M-20-bcy"/>
                             <constraint firstItem="TPe-Uy-4g8" firstAttribute="leading" secondItem="6lj-Ae-WZS" secondAttribute="leading" id="Hww-Qc-fRi"/>
@@ -70,6 +91,7 @@
                             <constraint firstItem="Hz4-Rr-5Db" firstAttribute="height" secondItem="pTh-ug-qYD" secondAttribute="height" multiplier="0.4" id="gmJ-Oh-caJ"/>
                             <constraint firstItem="Hz4-Rr-5Db" firstAttribute="centerX" secondItem="pTh-ug-qYD" secondAttribute="centerX" id="mes-Y8-Cdl"/>
                             <constraint firstItem="Hz4-Rr-5Db" firstAttribute="centerY" secondItem="pTh-ug-qYD" secondAttribute="centerY" id="oEw-om-Cro"/>
+                            <constraint firstItem="6lj-Ae-WZS" firstAttribute="bottom" secondItem="KWT-1n-d6s" secondAttribute="bottom" id="wGc-7Q-rVk"/>
                             <constraint firstItem="6lj-Ae-WZS" firstAttribute="bottom" secondItem="TPe-Uy-4g8" secondAttribute="bottom" id="zBe-hg-iVz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6lj-Ae-WZS"/>
@@ -85,7 +107,9 @@
                         <outlet property="messageImage" destination="rmf-V0-bpj" id="nf6-ru-Iet"/>
                         <outlet property="messageLabel" destination="1LE-au-Ern" id="MVn-qZ-RFQ"/>
                         <outlet property="messageView" destination="Hz4-Rr-5Db" id="Lvq-6V-5g3"/>
+                        <outlet property="noConnectionView" destination="KWT-1n-d6s" id="B1M-7J-PRy"/>
                         <outlet property="tableView" destination="TPe-Uy-4g8" id="zxE-wG-F7g"/>
+                        <outlet property="tableviewBottomConstraint" destination="zBe-hg-iVz" id="Nz3-Tf-Ykc"/>
                         <segue destination="wUq-hk-urm" kind="show" id="Qw4-gr-too"/>
                     </connections>
                 </viewController>

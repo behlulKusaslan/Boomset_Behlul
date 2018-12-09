@@ -22,15 +22,27 @@ class EventsViewController: UIViewController {
                 messageView.isHidden = false
                 messageImage.image = UIImage(named: "loading_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_loading_message", comment: "")
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
             case .ready:
                 tableView.isHidden = false
                 messageView.isHidden = true
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
                 tableView.reloadData()
             case .error:
                 tableView.isHidden = true
                 messageView.isHidden = false
                 messageImage.image = UIImage(named: "error_panda")
                 messageLabel.text = NSLocalizedString("EventsViewController_error_message", comment: "")
+                noConnectionView.isHidden = true
+                tableviewBottomConstraint.constant = 0
+            case .noConnection:
+                tableView.isHidden = false
+                messageView.isHidden = true
+                noConnectionView.isHidden = false
+                tableviewBottomConstraint.constant = 35
+                tableView.reloadData()
             }
         }
     }
@@ -40,14 +52,32 @@ class EventsViewController: UIViewController {
     @IBOutlet weak private var messageView: UIView!
     @IBOutlet weak private var messageLabel: UILabel!
     @IBOutlet weak private var messageImage: UIImageView!
+    @IBOutlet weak fileprivate var noConnectionView: UIView!
+    
+    // LayoutConstraints
+    @IBOutlet weak private var tableviewBottomConstraint: NSLayoutConstraint!
+
+    
+    // Proprties
+    fileprivate var offlineEvents: [EventResult]?
     
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Reachability.isConnectedToNetwork() {
+            state = .loading
+            getEventsList()
+        } else {
+            offlineEvents = KeyedArchiverManager.shared.readEvents()
+            state = .noConnection
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        state = .loading
-        getEventsList()
     }
     
     // MARK: - Function
@@ -58,6 +88,8 @@ class EventsViewController: UIViewController {
             case .success(let response):
                 do {
                     let events = try response.map(Events.self, failsOnEmptyData: false)
+                    // save events
+                    KeyedArchiverManager.shared.writeEventResults(events)
                     strongSelf.state = .ready(events)
                 } catch {
                     print("response map error")
@@ -91,9 +123,18 @@ extension EventsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard case .ready(let events) = state else { return }
-        let eventId = events.results[indexPath.row].id
-        goToAttendeesViewController(with: eventId)
+        
+        switch state {
+        case .ready(let events):
+            let eventId = events.results[indexPath.row].id
+            goToAttendeesViewController(with: eventId)
+        case .noConnection:
+            guard let offlineEvents = offlineEvents else { return }
+            let eventId = offlineEvents[indexPath.row].id
+            goToAttendeesViewController(with: eventId)
+        default:
+            print("do nothing")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,15 +151,30 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard case .ready(let events) = state else { return 0 }
-        return events.results.count
+        switch state {
+        case .ready(let events):
+            return events.results.count
+        case .noConnection:
+            guard let offlineEvents = offlineEvents else { return 0 }
+            return offlineEvents.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier) as? EventsTableViewCell ?? EventsTableViewCell()
-        guard case .ready(let events) = state else { return cell }
-        cell.configureCell(with: events.results[indexPath.row])
-        return cell
+        switch state {
+        case .ready(let events):
+            cell.configureCell(with: events.results[indexPath.row])
+            return cell
+        case .noConnection:
+            guard let offlineEvents = offlineEvents else { return cell }
+            cell.configureCell(with: offlineEvents[indexPath.row])
+            return cell
+        default:
+            return cell
+        }
     }
     
 }
@@ -134,5 +190,6 @@ extension EventsViewController {
         case loading
         case ready(Events)
         case error(String)
+        case noConnection
     }
 }
