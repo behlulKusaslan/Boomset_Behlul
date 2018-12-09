@@ -45,6 +45,7 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
         state = .loading
         getEventsList()
     }
@@ -74,6 +75,12 @@ class EventsViewController: UIViewController {
             destinationViewController.eventId = eventId
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
+    }
+    
+    @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem) {
+        print("Log Out")
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.AUTH_KEY)
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }
@@ -112,7 +119,6 @@ extension EventsViewController: UITableViewDataSource {
         cell.configureCell(with: events.results[indexPath.row])
         return cell
     }
-    
     
 }
 

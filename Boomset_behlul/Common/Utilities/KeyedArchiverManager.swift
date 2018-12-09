@@ -49,7 +49,6 @@ class KeyedArchiverManager {
             let keyToSaveArray = [newKey]
             UserDefaults.standard.set(keyToSaveArray, forKey: eventKey)
         }
-        debugPrint(UserDefaults.standard.stringArray(forKey: eventKey) ?? [String]())
     }
     
 }
