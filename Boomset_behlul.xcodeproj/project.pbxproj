@@ -15,6 +15,8 @@
 		4FB5F51221B93E3F0041375F /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */; };
 		4FBF5F9921B990D90030DFF5 /* Attendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5F9821B990D90030DFF5 /* Attendees.swift */; };
 		4FBF5F9B21BA45330030DFF5 /* KeyedArchiverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5F9A21BA45330030DFF5 /* KeyedArchiverManager.swift */; };
+		4FBF5FA321BCEC010030DFF5 /* AttendeesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF5FA221BCEC010030DFF5 /* AttendeesTableViewCell.swift */; };
+		4FBF5FA521BCEC0D0030DFF5 /* AttendeesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBF5FA421BCEC0D0030DFF5 /* AttendeesTableViewCell.xib */; };
 		4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326021B867020044CF84 /* AppDelegate.swift */; };
 		4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE326221B867020044CF84 /* LogInViewController.swift */; };
 		4FCE326621B867020044CF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE326421B867020044CF84 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		4FB5F51121B93E3F0041375F /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
 		4FBF5F9821B990D90030DFF5 /* Attendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendees.swift; sourceTree = "<group>"; };
 		4FBF5F9A21BA45330030DFF5 /* KeyedArchiverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedArchiverManager.swift; sourceTree = "<group>"; };
+		4FBF5FA221BCEC010030DFF5 /* AttendeesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesTableViewCell.swift; sourceTree = "<group>"; };
+		4FBF5FA421BCEC0D0030DFF5 /* AttendeesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendeesTableViewCell.xib; sourceTree = "<group>"; };
 		4FCE325D21B867020044CF84 /* Boomset_behlul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomset_behlul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCE326021B867020044CF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCE326221B867020044CF84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 			children = (
 				4F8425B821B920DF004F6959 /* EventsTableViewCell.swift */,
 				4F8425BD21B929C6004F6959 /* EventsTableViewCell.xib */,
+				4FBF5FA221BCEC010030DFF5 /* AttendeesTableViewCell.swift */,
+				4FBF5FA421BCEC0D0030DFF5 /* AttendeesTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBF5FA521BCEC0D0030DFF5 /* AttendeesTableViewCell.xib in Resources */,
 				4F8425B221B90CB9004F6959 /* Localizable.strings in Resources */,
 				4FCE326B21B867040044CF84 /* LaunchScreen.storyboard in Resources */,
 				4F8425BE21B929C6004F6959 /* EventsTableViewCell.xib in Resources */,
@@ -345,6 +352,7 @@
 				4FD8A9C821B86E12001BBC68 /* LoginResult.swift in Sources */,
 				4FCE326321B867020044CF84 /* LogInViewController.swift in Sources */,
 				4FD8A9D921B88CCE001BBC68 /* EventTarget.swift in Sources */,
+				4FBF5FA321BCEC010030DFF5 /* AttendeesTableViewCell.swift in Sources */,
 				4FCE326121B867020044CF84 /* AppDelegate.swift in Sources */,
 				4FD8A9D021B88367001BBC68 /* EventsViewController.swift in Sources */,
 				4FB5F51021B932980041375F /* XibLoadable.swift in Sources */,
