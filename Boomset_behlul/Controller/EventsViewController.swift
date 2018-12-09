@@ -87,8 +87,10 @@ class EventsViewController: UIViewController {
             switch result {
             case .success(let response):
                 do {
-                    let events = try response.map(Events.self, failsOnEmptyData: false)
+                    var events = try response.map(Events.self, failsOnEmptyData: false)
                     // save events
+                    let eventsResult = events.results.sorted { $0.modified < $1.modified }
+                    events.results = eventsResult
                     KeyedArchiverManager.shared.writeEventResults(events)
                     strongSelf.state = .ready(events)
                 } catch {

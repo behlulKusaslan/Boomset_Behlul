@@ -10,7 +10,7 @@ import Foundation
 
 struct Events: Codable {
     let count: Int
-    let results: [EventResult]
+    var results: [EventResult]
 }
 
 struct EventResult: Codable {
